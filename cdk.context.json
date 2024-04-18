@@ -1,0 +1,62 @@
+{
+  "vpc-provider:account=534762442995:filter.vpc-id=vpc-7ce6e406:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-7ce6e406",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "ownerAccountId": "534762442995",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-3a75835c",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-8055dcfe"
+          },
+          {
+            "subnetId": "subnet-31a05c10",
+            "cidr": "172.31.80.0/20",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0ecf459332a2577d8"
+          },
+          {
+            "subnetId": "subnet-64c34229",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "us-east-1c",
+            "routeTableId": "rtb-8055dcfe"
+          },
+          {
+            "subnetId": "subnet-0e42b151",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "us-east-1d",
+            "routeTableId": "rtb-8055dcfe"
+          },
+          {
+            "subnetId": "subnet-797b7e47",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "us-east-1e",
+            "routeTableId": "rtb-0ecf459332a2577d8"
+          },
+          {
+            "subnetId": "subnet-1a208814",
+            "cidr": "172.31.64.0/20",
+            "availabilityZone": "us-east-1f",
+            "routeTableId": "rtb-0ecf459332a2577d8"
+          }
+        ]
+      }
+    ]
+  },
+  "security-group:account=534762442995:region=us-east-1:securityGroupId=sg-0f37fbafe72c81bd1": {
+    "securityGroupId": "sg-0f37fbafe72c81bd1",
+    "allowAllOutbound": false
+  },
+  "ami:account=534762442995:filters.image-type.0=machine:filters.name.0=al2023-ami-2023.4.20240401.1-kernel-6.1-x86_64:filters.state.0=available:region=us-east-1": "ami-051f8a213df8bc089",
+  "security-group:account=534762442995:region=us-east-1:securityGroupId=sg-0f04e62e": {
+    "securityGroupId": "sg-0f04e62e",
+    "allowAllOutbound": false
+  },
+  "ami:account=534762442995:filters.image-type.0=machine:filters.name.0=amzn2-ami-kernel-5.10-hvm-2.0.20240329.0-x86_64-gp2:filters.state.0=available:region=us-east-1": "ami-0a699202e5027c10d"
+}
