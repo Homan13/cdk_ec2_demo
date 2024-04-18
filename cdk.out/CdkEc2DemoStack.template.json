@@ -1,0 +1,86 @@
+{
+ "Resources": {
+  "InstanceInstanceProfileAB5AEF02": {
+   "Type": "AWS::IAM::InstanceProfile",
+   "Properties": {
+    "Roles": [
+     "ec2-s3-access-role"
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkEc2DemoStack/Instance/InstanceProfile"
+   }
+  },
+  "InstanceC1063A87": {
+   "Type": "AWS::EC2::Instance",
+   "Properties": {
+    "AvailabilityZone": "us-east-1a",
+    "IamInstanceProfile": {
+     "Ref": "InstanceInstanceProfileAB5AEF02"
+    },
+    "ImageId": "ami-0a699202e5027c10d",
+    "InstanceType": "t3.small",
+    "KeyName": "testing-keypait",
+    "SecurityGroupIds": [
+     "sg-0f04e62e"
+    ],
+    "SubnetId": "subnet-3a75835c",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "CdkEc2DemoStack/Instance"
+     }
+    ],
+    "UserData": {
+     "Fn::Base64": "#!/bin/bash\naws s3 cp s3://khoman-cdk-assets/bootstrap.sh /tmp/bootstrap.sh\nsudo chmod +x /tmp/bootstrap.sh\nsudo bash /tmp/bootstrap.sh"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkEc2DemoStack/Instance/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzQ21zNQTCwv1k1OydbNyUzSqw4uSUzO1glKLc4vLUpO1QHKxVenJhvpVXvmFZck5gGFnNPyYOxanczEXD0kgYCi/LTMHKA4UAxmRq1OQGVJRn6evrGeoYGeoZFiVnFmpm5RaV5JZm6qXhCEBgAryaFnjAAAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "CdkEc2DemoStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
